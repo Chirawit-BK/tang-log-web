@@ -37,7 +37,7 @@ export function InterestCard({ loan }: InterestCardProps) {
       : `฿${formatAmount(loan.interestRate)}/${periodLabel}`
 
   return (
-    <div className="bg-bg-secondary rounded-xl p-4 shadow-sm">
+    <div className="neo-card p-4">
       {/* Interest rate and accrued */}
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div>

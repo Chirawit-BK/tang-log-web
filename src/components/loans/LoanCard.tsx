@@ -33,27 +33,25 @@ export function LoanCard({ loan }: LoanCardProps) {
   // Card styling based on direction and status
   const getCardStyle = () => {
     if (loan.status === 'closed') {
-      return 'bg-bg-tertiary/50 border-bg-tertiary'
+      return 'bg-bg-tertiary/50'
     }
     if (loan.direction === 'borrow') {
-      return 'bg-danger/5 border-danger/20'
+      return 'bg-danger/10'
     }
-    return 'bg-success/5 border-success/20'
+    return 'bg-success/10'
   }
 
   // Status badge styling
   const getStatusBadge = () => {
     if (loan.status === 'closed') {
       return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-bg-tertiary text-text-tertiary">
-          <span className="w-1.5 h-1.5 rounded-full bg-text-tertiary" />
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-bold border-2 border-border bg-bg-tertiary text-text-tertiary">
           Closed
         </span>
       )
     }
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
-        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-bold border-2 border-border bg-primary text-white">
         Active
       </span>
     )
@@ -72,13 +70,12 @@ export function LoanCard({ loan }: LoanCardProps) {
   return (
     <button
       onClick={handleClick}
-      className={`w-full rounded-xl p-4 border transition-all duration-200
-                 active:scale-[0.98] text-left ${getCardStyle()}`}
+      className={`neo-card w-full p-4 text-left ${getCardStyle()}`}
     >
       <div className="flex items-start gap-3">
         {/* Icon */}
         <div
-          className={`w-10 h-10 rounded-full bg-bg-primary flex items-center justify-center flex-shrink-0 ${getIconColor()}`}
+          className={`w-10 h-10 rounded-lg bg-bg-secondary border-2 border-border flex items-center justify-center flex-shrink-0 ${getIconColor()}`}
         >
           <User className="w-5 h-5" />
         </div>

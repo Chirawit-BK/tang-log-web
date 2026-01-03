@@ -107,7 +107,7 @@ export function AccountModal({
   return (
     <div className="fixed inset-0 bg-bg-primary z-[100] flex flex-col pt-safe pb-safe">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 h-14 border-b border-bg-tertiary">
+      <div className="flex items-center justify-between px-4 h-14 border-b-3 border-border">
         <button
           onClick={onClose}
           className="touch-target flex items-center justify-center text-primary"
@@ -115,7 +115,7 @@ export function AccountModal({
         >
           <X className="w-6 h-6" />
         </button>
-        <h1 className="text-lg font-semibold text-text-primary">
+        <h1 className="text-lg font-bold text-text-primary">
           {isEditMode ? 'Edit Account' : 'Add Account'}
         </h1>
         <div className="w-11" />
@@ -135,9 +135,8 @@ export function AccountModal({
               onChange={(e) => setName(e.target.value)}
               placeholder="My Savings"
               required
-              className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary
-                         text-text-primary placeholder:text-text-tertiary
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              className="neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl
+                         text-text-primary placeholder:text-text-tertiary"
             />
           </div>
 
@@ -152,10 +151,11 @@ export function AccountModal({
                   key={t}
                   type="button"
                   onClick={() => setType(t)}
-                  className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-xl text-sm font-bold border-2 border-border transition-all
+                             shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                     type === t
                       ? 'bg-primary text-white'
-                      : 'bg-bg-secondary text-text-secondary'
+                      : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary'
                   }`}
                 >
                   {ACCOUNT_TYPE_LABELS[t]}
@@ -170,7 +170,7 @@ export function AccountModal({
               {isEditMode ? 'Initial Balance' : 'Initial Balance'}
             </label>
             {isEditMode ? (
-              <div className="px-4 py-3 bg-bg-tertiary rounded-xl text-text-secondary">
+              <div className="px-4 py-3 bg-bg-tertiary rounded-xl border-2 border-border text-text-secondary">
                 {formatCurrency(account?.initialBalance || 0)}
                 <span className="text-xs ml-2">(Cannot be changed)</span>
               </div>
@@ -187,9 +187,8 @@ export function AccountModal({
                   required
                   min="0"
                   step="0.01"
-                  className="w-full pl-8 pr-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary
-                             text-text-primary placeholder:text-text-tertiary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  className="neo-input w-full pl-8 pr-4 py-3 bg-bg-secondary rounded-xl
+                             text-text-primary placeholder:text-text-tertiary"
                 />
               </div>
             )}
@@ -201,7 +200,7 @@ export function AccountModal({
               <label className="block text-sm font-medium text-text-secondary">
                 Current Balance
               </label>
-              <div className="px-4 py-3 bg-bg-tertiary rounded-xl text-text-primary font-semibold">
+              <div className="px-4 py-3 bg-bg-tertiary rounded-xl border-2 border-border text-text-primary font-bold">
                 {formatCurrency(account.currentBalance)}
               </div>
             </div>
@@ -218,9 +217,10 @@ export function AccountModal({
                   key={i}
                   type="button"
                   onClick={() => setIcon(i)}
-                  className={`w-12 h-12 rounded-xl text-2xl transition-all ${
+                  className={`w-12 h-12 rounded-xl text-2xl border-2 border-border transition-all
+                             shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                     icon === i
-                      ? 'bg-primary/20 ring-2 ring-primary'
+                      ? 'bg-primary/20 border-primary'
                       : 'bg-bg-secondary'
                   }`}
                 >
@@ -241,8 +241,8 @@ export function AccountModal({
                   key={c}
                   type="button"
                   onClick={() => setColor(c)}
-                  className={`w-10 h-10 rounded-full transition-all ${
-                    color === c ? 'ring-2 ring-offset-2 ring-primary' : ''
+                  className={`w-10 h-10 rounded-full border-2 transition-all ${
+                    color === c ? 'border-border shadow-[2px_2px_0px_#1a1a1a]' : 'border-transparent'
                   }`}
                   style={{ backgroundColor: c }}
                 />
@@ -253,18 +253,20 @@ export function AccountModal({
           {/* Active Toggle (Edit mode only) */}
           {isEditMode && (
             <div className="flex items-center justify-between py-2">
-              <span className="text-sm font-medium text-text-secondary">
+              <span className="text-sm font-bold text-text-secondary">
                 Active
               </span>
               <button
                 type="button"
                 onClick={() => setIsActive(!isActive)}
-                className={`relative w-12 h-7 rounded-full transition-colors ${
+                className={`relative w-12 h-7 rounded-lg border-2 border-border transition-colors duration-200 ${
                   isActive ? 'bg-primary' : 'bg-bg-tertiary'
                 }`}
+                role="switch"
+                aria-checked={isActive}
               >
                 <span
-                  className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform ${
+                  className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white border-2 border-border rounded transition-transform duration-200 ${
                     isActive ? 'translate-x-5' : 'translate-x-0'
                   }`}
                 />
@@ -276,9 +278,8 @@ export function AccountModal({
           <button
             type="submit"
             disabled={isSaving || !name.trim()}
-            className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-xl
-                       transition-all duration-200 active:scale-[0.98]
-                       hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed
+            className="neo-btn w-full px-4 py-3 bg-primary text-white
+                       disabled:opacity-50 disabled:cursor-not-allowed
                        flex items-center justify-center gap-2"
           >
             {isSaving && <Loader2 className="w-5 h-5 animate-spin" />}
@@ -290,9 +291,7 @@ export function AccountModal({
             <button
               type="button"
               onClick={onDelete}
-              className="w-full px-4 py-3 text-danger font-semibold rounded-xl
-                         transition-all duration-200 active:scale-[0.98]
-                         border border-danger/30 hover:bg-danger/10
+              className="neo-btn w-full px-4 py-3 bg-bg-secondary text-danger
                          flex items-center justify-center gap-2"
             >
               <Trash2 className="w-5 h-5" />

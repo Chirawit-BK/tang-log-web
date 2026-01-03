@@ -26,7 +26,7 @@ function formatCurrency(amount: number): string {
 
 function SkeletonChart() {
   return (
-    <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm">
+    <div className="neo-card p-4">
       <div className="h-5 w-36 rounded bg-bg-tertiary mb-4" />
       <div className="flex items-center justify-center">
         <div className="w-40 h-40 rounded-full bg-bg-tertiary animate-pulse" />
@@ -45,7 +45,7 @@ function SkeletonChart() {
 
 function EmptyState() {
   return (
-    <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm">
+    <div className="neo-card p-4">
       <h3 className="text-base font-semibold text-text-primary mb-4">
         Waste Distribution
       </h3>
@@ -80,8 +80,8 @@ export function WastePieChart({
   }))
 
   return (
-    <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm">
-      <h3 className="text-base font-semibold text-text-primary mb-4">
+    <div className="neo-card p-4">
+      <h3 className="text-base font-bold text-text-primary mb-4">
         Waste Distribution
       </h3>
 

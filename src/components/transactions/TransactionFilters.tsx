@@ -44,8 +44,9 @@ function FilterChip({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium
-                  transition-colors whitespace-nowrap
+      className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-bold
+                  border-2 border-border transition-all whitespace-nowrap
+                  shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5
                   ${
                     isActive
                       ? 'bg-primary text-white'
@@ -70,7 +71,7 @@ interface DropdownMenuProps {
 function DropdownMenu({ children, isOpen }: DropdownMenuProps) {
   if (!isOpen) return null
   return (
-    <div className="absolute top-full left-0 mt-2 min-w-[200px] bg-bg-primary rounded-xl shadow-lg border border-bg-tertiary z-50 py-2 max-h-[300px] overflow-y-auto">
+    <div className="absolute top-full left-0 mt-2 min-w-[200px] bg-bg-secondary rounded-xl border-3 border-border shadow-[4px_4px_0px_#1a1a1a] z-50 py-2 max-h-[300px] overflow-y-auto">
       {children}
     </div>
   )
@@ -445,8 +446,10 @@ export function TransactionFilters({
         {hasActiveFilters && (
           <button
             onClick={onReset}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium
-                       bg-danger/10 text-danger hover:bg-danger/20 transition-colors whitespace-nowrap"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-bold
+                       bg-danger text-white border-2 border-border
+                       shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5
+                       whitespace-nowrap"
           >
             <X className="w-3.5 h-3.5" />
             Clear

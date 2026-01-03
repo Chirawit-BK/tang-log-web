@@ -23,14 +23,14 @@ const accountTypeIcons = {
 }
 
 const accountTypeColors = {
-  cash: 'bg-success/20 text-success',
-  bank: 'bg-primary/20 text-primary',
-  ewallet: 'bg-secondary/20 text-secondary',
+  cash: 'bg-success text-white border-2 border-border',
+  bank: 'bg-primary text-white border-2 border-border',
+  ewallet: 'bg-secondary text-white border-2 border-border',
 }
 
 function SkeletonCard() {
   return (
-    <div className="bg-bg-secondary rounded-2xl p-5 shadow-sm animate-pulse">
+    <div className="neo-card p-5 animate-pulse">
       <div className="flex items-center justify-center gap-2 mb-3">
         <div className="w-5 h-5 rounded bg-bg-tertiary" />
         <div className="h-4 w-24 rounded bg-bg-tertiary" />
@@ -55,7 +55,7 @@ export function BalanceCard({ accounts, isLoading }: BalanceCardProps) {
   const totalBalance = accounts.reduce((sum, acc) => sum + acc.balance, 0)
 
   return (
-    <div className="bg-bg-secondary rounded-2xl p-5 shadow-sm">
+    <div className="neo-card p-5 bg-warning/10">
       {/* Header */}
       <div className="flex items-center justify-center gap-2 mb-2 text-text-tertiary">
         <Wallet className="w-5 h-5" />

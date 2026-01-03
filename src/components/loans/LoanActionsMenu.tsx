@@ -46,7 +46,7 @@ export function LoanActionsMenu({ loan, onEdit, onClose, onDelete }: LoanActions
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-1 w-48 bg-bg-secondary rounded-xl shadow-lg border border-bg-tertiary overflow-hidden z-50">
+        <div className="absolute right-0 top-full mt-1 w-48 neo-card overflow-hidden z-50 p-0">
           {/* Edit */}
           <button
             onClick={() => handleAction(onEdit)}

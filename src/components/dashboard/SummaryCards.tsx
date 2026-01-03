@@ -19,9 +19,9 @@ function formatCurrency(amount: number): string {
 
 function SkeletonCard() {
   return (
-    <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm flex-1 animate-pulse">
+    <div className="neo-card p-4 flex-1 animate-pulse">
       <div className="flex items-center gap-2 mb-2">
-        <div className="w-8 h-8 rounded-full bg-bg-tertiary" />
+        <div className="w-8 h-8 rounded-full bg-bg-tertiary border-2 border-border" />
         <div className="h-4 w-16 rounded bg-bg-tertiary" />
       </div>
       <div className="h-6 w-24 rounded bg-bg-tertiary" />
@@ -50,31 +50,29 @@ export function SummaryCards({
       {/* Income Card */}
       <button
         onClick={onIncomeClick}
-        className="bg-bg-secondary rounded-2xl p-4 shadow-sm flex-1 text-left
-                   transition-all duration-200 active:scale-[0.98]"
+        className="neo-card p-4 flex-1 text-left bg-success/10"
       >
         <div className="flex items-center gap-2 mb-2">
-          <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
-            <TrendingUp className="w-4 h-4 text-success" />
+          <div className="w-8 h-8 rounded-full bg-success border-2 border-border flex items-center justify-center">
+            <TrendingUp className="w-4 h-4 text-white" />
           </div>
-          <span className="text-sm text-text-tertiary">Income</span>
+          <span className="text-sm font-semibold text-text-secondary">Income</span>
         </div>
-        <p className="text-lg font-bold text-success">{formatCurrency(income)}</p>
+        <p className="text-xl font-black text-success">{formatCurrency(income)}</p>
       </button>
 
       {/* Expense Card */}
       <button
         onClick={onExpenseClick}
-        className="bg-bg-secondary rounded-2xl p-4 shadow-sm flex-1 text-left
-                   transition-all duration-200 active:scale-[0.98]"
+        className="neo-card p-4 flex-1 text-left bg-expense/10"
       >
         <div className="flex items-center gap-2 mb-2">
-          <div className="w-8 h-8 rounded-full bg-expense/20 flex items-center justify-center">
-            <TrendingDown className="w-4 h-4 text-expense" />
+          <div className="w-8 h-8 rounded-full bg-expense border-2 border-border flex items-center justify-center">
+            <TrendingDown className="w-4 h-4 text-white" />
           </div>
-          <span className="text-sm text-text-tertiary">Expense</span>
+          <span className="text-sm font-semibold text-text-secondary">Expense</span>
         </div>
-        <p className="text-lg font-bold text-expense">{formatCurrency(expense)}</p>
+        <p className="text-xl font-black text-expense">{formatCurrency(expense)}</p>
       </button>
     </div>
   )

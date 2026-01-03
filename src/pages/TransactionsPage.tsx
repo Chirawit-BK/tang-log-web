@@ -98,8 +98,9 @@ export function TransactionsPage() {
         <h1 className="text-2xl font-bold text-text-primary">Transactions</h1>
         <button
           onClick={toggleSearch}
-          className={`p-2 rounded-full transition-colors
-                      ${showSearch ? 'bg-primary text-white' : 'text-text-secondary hover:bg-bg-secondary'}`}
+          className={`p-2 rounded-lg border-2 border-border transition-all
+                      shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5
+                      ${showSearch ? 'bg-primary text-white' : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary'}`}
           aria-label={showSearch ? 'Hide search' : 'Show search'}
         >
           <Search className="w-5 h-5" />
@@ -159,8 +160,7 @@ export function TransactionsPage() {
           </p>
           <button
             onClick={resetFilters}
-            className="mt-4 px-4 py-2 bg-primary text-white rounded-lg font-medium
-                       hover:bg-primary-dark transition-colors"
+            className="neo-btn mt-4 px-4 py-2 bg-primary text-white"
           >
             Clear filters
           </button>
@@ -194,8 +194,7 @@ export function TransactionsPage() {
           <button
             onClick={loadMore}
             disabled={isLoadingMore}
-            className="px-6 py-3 bg-bg-secondary text-text-primary rounded-xl font-medium
-                       hover:bg-bg-tertiary transition-colors disabled:opacity-50
+            className="neo-btn px-6 py-3 bg-bg-secondary text-text-primary disabled:opacity-50
                        flex items-center gap-2"
           >
             {isLoadingMore ? (

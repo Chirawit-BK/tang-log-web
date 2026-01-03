@@ -95,7 +95,7 @@ export function AccountsPage() {
               <button
                 key={account.id}
                 onClick={() => handleEditAccount(account)}
-                className={`w-full bg-bg-secondary rounded-2xl p-4 shadow-sm text-left transition-colors active:bg-bg-tertiary ${
+                className={`neo-card w-full p-4 text-left ${
                   !account.isActive ? 'opacity-60' : ''
                 }`}
               >
@@ -132,7 +132,7 @@ export function AccountsPage() {
             {/* Add account button */}
             <button
               onClick={handleAddAccount}
-              className="w-full bg-bg-secondary rounded-2xl p-4 shadow-sm text-center transition-colors active:bg-bg-tertiary border-2 border-dashed border-bg-tertiary"
+              className="w-full p-4 text-center border-3 border-dashed border-border rounded-xl bg-bg-tertiary/30 hover:bg-bg-tertiary/50 transition-colors"
             >
               <div className="flex items-center justify-center gap-2 text-primary">
                 <Plus className="w-5 h-5" />

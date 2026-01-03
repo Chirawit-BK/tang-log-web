@@ -13,7 +13,7 @@ function formatAmount(amount: number): string {
 
 export function TotalInterestPaidCard({ loan }: TotalInterestPaidCardProps) {
   return (
-    <div className="bg-bg-secondary rounded-xl p-4 shadow-sm">
+    <div className="neo-card p-4">
       <p className="text-xs text-text-tertiary uppercase tracking-wide mb-1">Total Interest Paid</p>
       <div className="flex items-baseline gap-2">
         <p className="text-lg font-semibold text-text-primary">

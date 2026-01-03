@@ -39,11 +39,11 @@ export function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo and branding */}
         <div className="text-center mb-12">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-primary flex items-center justify-center">
-            <span className="text-4xl text-white font-bold">T</span>
+          <div className="w-20 h-20 mx-auto mb-6 rounded-xl bg-primary border-3 border-border shadow-[4px_4px_0px_#1a1a1a] flex items-center justify-center">
+            <span className="text-4xl text-white font-black">T</span>
           </div>
-          <h1 className="text-3xl font-bold text-text-primary mb-2">TangLog</h1>
-          <p className="text-text-tertiary text-base">
+          <h1 className="text-3xl font-black text-text-primary mb-2">TangLog</h1>
+          <p className="text-text-secondary text-base font-medium">
             Track your finances
             <br />
             without the confusion
@@ -63,11 +63,9 @@ export function LoginPage() {
           <button
             onClick={initiateGoogleLogin}
             disabled={isOAuthLoading}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3
-                       bg-white rounded-xl border border-bg-tertiary
-                       text-text-primary font-medium text-base
-                       transition-all duration-200
-                       hover:bg-bg-secondary active:scale-[0.98]
+            className="neo-btn w-full flex items-center justify-center gap-3 px-4 py-3
+                       bg-white
+                       text-text-primary text-base
                        disabled:opacity-50 disabled:cursor-not-allowed
                        touch-target"
           >
@@ -101,11 +99,9 @@ export function LoginPage() {
             <button
               onClick={initiateAppleLogin}
               disabled={isOAuthLoading}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3
-                         bg-black rounded-xl
-                         text-white font-medium text-base
-                         transition-all duration-200
-                         hover:bg-gray-800 active:scale-[0.98]
+              className="neo-btn w-full flex items-center justify-center gap-3 px-4 py-3
+                         bg-text-primary
+                         text-white text-base
                          disabled:opacity-50 disabled:cursor-not-allowed
                          touch-target"
             >

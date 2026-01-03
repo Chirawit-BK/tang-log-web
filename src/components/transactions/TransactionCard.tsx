@@ -48,12 +48,10 @@ export function TransactionCard({ transaction }: TransactionCardProps) {
   return (
     <button
       onClick={handleClick}
-      className="w-full bg-bg-primary rounded-xl p-4 flex items-center gap-3
-                 transition-all duration-200 active:scale-[0.98] active:bg-bg-secondary
-                 text-left"
+      className="neo-card w-full p-4 flex items-center gap-3 text-left"
     >
       {/* Icon */}
-      <div className="w-10 h-10 rounded-full bg-bg-secondary flex items-center justify-center text-xl flex-shrink-0">
+      <div className="w-10 h-10 rounded-lg bg-bg-tertiary border-2 border-border flex items-center justify-center text-xl flex-shrink-0">
         {isTransfer ? (
           <ArrowRightLeft className="w-5 h-5 text-text-secondary" />
         ) : (

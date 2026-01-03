@@ -40,8 +40,8 @@ export function TabBar({ onAddClick }: TabBarProps) {
   }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-bg-primary border-t border-bg-tertiary pb-safe z-50">
-      <div className="flex items-center justify-around h-[49px]">
+    <nav className="fixed bottom-0 left-0 right-0 bg-bg-secondary border-t-3 border-border pb-safe z-50">
+      <div className="flex items-center justify-around h-[56px]">
         {tabs.map((tab) => {
           const Icon = tab.icon
           const active = isActive(tab.route)
@@ -54,20 +54,19 @@ export function TabBar({ onAddClick }: TabBarProps) {
               className={`
                 flex flex-col items-center justify-center flex-1 h-full
                 touch-target transition-all duration-150
-                active:scale-95 active:opacity-70
-                ${isAddButton ? '' : active ? 'text-primary' : 'text-text-tertiary'}
+                ${isAddButton ? '' : active ? 'text-primary font-bold' : 'text-text-tertiary'}
               `}
               aria-label={tab.label}
               aria-current={active ? 'page' : undefined}
             >
               {isAddButton ? (
-                <div className="flex items-center justify-center w-11 h-7 bg-primary rounded-full">
+                <div className="flex items-center justify-center w-12 h-8 bg-primary border-3 border-border rounded-lg shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 transition-all">
                   <Icon className="w-5 h-5 text-white" />
                 </div>
               ) : (
                 <Icon className="w-6 h-6" />
               )}
-              <span className={`text-[10px] mt-0.5 ${isAddButton ? 'text-primary font-medium' : ''}`}>
+              <span className={`text-[10px] mt-0.5 font-semibold ${isAddButton ? 'text-primary' : ''}`}>
                 {tab.label}
               </span>
             </button>

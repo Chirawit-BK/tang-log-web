@@ -68,7 +68,7 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
   return (
     <div className="fixed inset-0 bg-bg-primary z-[100] flex flex-col pt-safe pb-safe">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 h-14 border-b border-bg-tertiary">
+      <div className="flex items-center justify-between px-4 h-14 border-b-3 border-border">
         <button
           onClick={onClose}
           className="touch-target flex items-center justify-center text-primary"
@@ -77,7 +77,7 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
         >
           <X className="w-6 h-6" />
         </button>
-        <h1 className="text-lg font-semibold text-text-primary">Edit Loan</h1>
+        <h1 className="text-lg font-bold text-text-primary">Edit Loan</h1>
         <div className="w-11" />
       </div>
 
@@ -97,10 +97,9 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
                 setError(null)
               }}
               placeholder="Name..."
-              className={`w-full px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
+              className={`neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
                          placeholder:text-text-tertiary
-                         focus:outline-none focus:ring-2 focus:ring-primary/50
-                         ${error ? 'border-danger' : 'border-bg-tertiary'}`}
+                         ${error ? 'border-danger' : ''}`}
             />
             {error && <p className="text-sm text-danger">{error}</p>}
           </div>
@@ -114,8 +113,7 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
               <button
                 type="button"
                 onClick={() => setShowDueDatePicker(!showDueDatePicker)}
-                className="w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary text-text-primary
-                           focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="neo-input w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl text-text-primary"
               >
                 <span className="flex items-center gap-2">
                   <Calendar className="w-5 h-5 text-text-tertiary" />
@@ -127,7 +125,7 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
               </button>
 
               {showDueDatePicker && (
-                <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-primary rounded-xl border border-bg-tertiary shadow-lg z-10">
+                <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-secondary rounded-xl border-3 border-border shadow-[4px_4px_0px_#1a1a1a] z-10">
                   <input
                     type="date"
                     value={dueDate}
@@ -135,8 +133,7 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
                       setDueDate(e.target.value)
                       setShowDueDatePicker(false)
                     }}
-                    className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary text-text-primary
-                              focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    className="neo-input w-full px-4 py-3 bg-bg-tertiary rounded-xl text-text-primary"
                   />
                   {dueDate && (
                     <button
@@ -145,7 +142,7 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
                         setDueDate('')
                         setShowDueDatePicker(false)
                       }}
-                      className="w-full mt-2 py-2 text-sm text-danger hover:bg-danger/10 rounded-lg transition-colors"
+                      className="neo-btn w-full mt-2 py-2 text-sm bg-bg-tertiary text-danger"
                     >
                       Clear due date
                     </button>
@@ -165,15 +162,14 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
               onChange={(e) => setNote(e.target.value)}
               placeholder="Add notes..."
               rows={3}
-              className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary
-                        text-text-primary placeholder:text-text-tertiary
-                        focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+              className="neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl
+                        text-text-primary placeholder:text-text-tertiary resize-none"
             />
           </div>
 
           {/* Read-only info */}
-          <div className="p-4 bg-bg-secondary rounded-xl">
-            <p className="text-xs text-text-tertiary uppercase tracking-wide mb-2">
+          <div className="p-4 bg-bg-secondary rounded-xl border-2 border-border">
+            <p className="text-xs text-text-tertiary uppercase tracking-wide mb-2 font-bold">
               Non-editable fields
             </p>
             <p className="text-sm text-text-secondary">
@@ -186,9 +182,8 @@ export function EditLoanModal({ isOpen, loan, onClose, onSave, isSaving }: EditL
           <button
             type="submit"
             disabled={isSaving}
-            className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-xl
-                      transition-all duration-200 active:scale-[0.98]
-                      hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed
+            className="neo-btn w-full px-4 py-3 bg-primary text-white
+                      disabled:opacity-50 disabled:cursor-not-allowed
                       flex items-center justify-center gap-2"
           >
             {isSaving && <Loader2 className="w-5 h-5 animate-spin" />}

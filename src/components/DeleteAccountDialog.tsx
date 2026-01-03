@@ -28,7 +28,7 @@ export function DeleteAccountDialog({
       />
 
       {/* Dialog */}
-      <div className="relative bg-bg-secondary rounded-2xl p-6 mx-4 max-w-sm w-full shadow-xl">
+      <div className="relative neo-card p-6 mx-4 max-w-sm w-full bg-danger/5">
         <h2 className="text-lg font-semibold text-text-primary mb-2">
           Delete Account?
         </h2>

@@ -44,12 +44,12 @@ export function DueDateCard({ loan }: DueDateCardProps) {
 
   return (
     <div
-      className={`rounded-xl p-4 shadow-sm ${
+      className={`neo-card p-4 ${
         isOverdue
-          ? 'bg-danger/10 border border-danger/30'
+          ? 'bg-danger/10'
           : isDueSoon
-            ? 'bg-warning/10 border border-warning/30'
-            : 'bg-bg-secondary'
+            ? 'bg-warning/10'
+            : ''
       }`}
     >
       <div className="flex items-start gap-3">

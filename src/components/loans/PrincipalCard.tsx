@@ -16,7 +16,7 @@ export function PrincipalCard({ loan }: PrincipalCardProps) {
   const percentagePaid = loan.principal > 0 ? (principalPaid / loan.principal) * 100 : 0
 
   return (
-    <div className="bg-bg-secondary rounded-xl p-4 shadow-sm">
+    <div className="neo-card p-4">
       <div className="grid grid-cols-2 gap-4 mb-3">
         <div>
           <p className="text-xs text-text-tertiary uppercase tracking-wide mb-1">Principal</p>

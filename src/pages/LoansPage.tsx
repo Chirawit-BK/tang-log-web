@@ -107,9 +107,9 @@ export function LoansPage() {
       <div className="mt-6">
         <button
           onClick={() => setIsAddModalOpen(true)}
-          className="w-full py-4 px-4 border-2 border-dashed border-bg-tertiary rounded-xl
-                     text-text-secondary font-medium
-                     hover:border-primary hover:text-primary hover:bg-primary/5
+          className="w-full py-4 px-4 border-3 border-dashed border-border rounded-xl
+                     text-text-secondary font-bold bg-bg-tertiary/30
+                     hover:bg-bg-tertiary/50 hover:text-primary
                      transition-all duration-200 flex items-center justify-center gap-2"
         >
           <Plus className="w-5 h-5" />

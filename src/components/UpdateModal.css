@@ -15,17 +15,18 @@
 .update-modal {
   background-color: #ffffff;
   border-radius: 12px;
+  border: 3px solid #1a1a1a;
   padding: 32px;
   max-width: 320px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 6px 6px 0px #1a1a1a;
 }
 
 .update-modal-title {
   margin: 0 0 16px 0;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a1a1a;
 }
 
@@ -33,26 +34,28 @@
   margin: 0 0 24px 0;
   font-size: 16px;
   line-height: 1.5;
-  color: #666666;
+  color: #4a4a4a;
 }
 
 .update-modal-button {
   width: 100%;
   padding: 14px 24px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
-  background-color: #007aff;
-  border: none;
+  background-color: #4361ee;
+  border: 3px solid #1a1a1a;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .update-modal-button:hover {
-  background-color: #0056b3;
+  box-shadow: 6px 6px 0px #1a1a1a;
 }
 
 .update-modal-button:active {
-  background-color: #004494;
+  box-shadow: 2px 2px 0px #1a1a1a;
+  transform: translate(2px, 2px);
 }

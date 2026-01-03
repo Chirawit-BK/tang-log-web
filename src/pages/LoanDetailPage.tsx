@@ -87,10 +87,10 @@ export function LoanDetailPage() {
         </header>
 
         <div className="max-w-lg mx-auto px-4 py-6">
-          <div className="bg-bg-secondary rounded-2xl p-6 shadow-sm">
+          <div className="neo-card p-6">
             <div className="flex flex-col items-center justify-center py-8 text-text-tertiary">
               <Handshake className="w-16 h-16 mb-4 opacity-50" />
-              <p className="text-lg font-medium text-text-primary">Loan not found</p>
+              <p className="text-lg font-bold text-text-primary">Loan not found</p>
               <p className="text-sm mt-2">{error || 'This loan may have been deleted'}</p>
             </div>
           </div>
@@ -132,10 +132,10 @@ export function LoanDetailPage() {
         {/* Direction badge */}
         <div className="flex items-center gap-2">
           <span
-            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold border-2 border-border ${
               loan.direction === 'borrow'
-                ? 'bg-danger/20 text-danger'
-                : 'bg-success/20 text-success'
+                ? 'bg-danger text-white'
+                : 'bg-success text-white'
             }`}
           >
             {directionLabel}

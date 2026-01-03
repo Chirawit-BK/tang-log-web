@@ -67,7 +67,7 @@ function CategoryForm({
   return (
     <div className="fixed inset-0 bg-bg-primary z-[100] flex flex-col pt-safe pb-safe">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 h-14 border-b border-bg-tertiary">
+      <div className="flex items-center justify-between px-4 h-14 border-b-3 border-border">
         <button
           onClick={onClose}
           className="touch-target flex items-center justify-center text-primary"
@@ -75,7 +75,7 @@ function CategoryForm({
         >
           <X className="w-6 h-6" />
         </button>
-        <h1 className="text-lg font-semibold text-text-primary">
+        <h1 className="text-lg font-bold text-text-primary">
           {isEditMode ? 'Edit Category' : 'Add Category'}
         </h1>
         <div className="w-11" />
@@ -86,7 +86,7 @@ function CategoryForm({
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* System Category Notice */}
           {isSystemCategory && (
-            <div className="px-4 py-3 bg-primary/10 text-primary rounded-xl text-sm">
+            <div className="px-4 py-3 bg-primary/20 text-primary rounded-xl text-sm font-bold border-3 border-primary">
               This is a system category. Only icon and color can be customized.
             </div>
           )}
@@ -97,7 +97,7 @@ function CategoryForm({
               Type
             </label>
             {isEditMode ? (
-              <div className="px-4 py-3 bg-bg-tertiary rounded-xl text-text-secondary">
+              <div className="px-4 py-3 bg-bg-tertiary rounded-xl border-2 border-border text-text-secondary">
                 {CATEGORY_TYPE_LABELS[type]}
                 <span className="text-xs ml-2">(Cannot be changed)</span>
               </div>
@@ -108,10 +108,11 @@ function CategoryForm({
                     key={t}
                     type="button"
                     onClick={() => setType(t)}
-                    className={`px-3 py-3 rounded-xl text-sm font-medium transition-colors ${
+                    className={`px-3 py-3 rounded-xl text-sm font-bold border-2 border-border transition-all
+                               shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                       type === t
                         ? 'bg-primary text-white'
-                        : 'bg-bg-secondary text-text-secondary'
+                        : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary'
                     }`}
                   >
                     {CATEGORY_TYPE_LABELS[t]}
@@ -127,7 +128,7 @@ function CategoryForm({
               Name
             </label>
             {isSystemCategory ? (
-              <div className="px-4 py-3 bg-bg-tertiary rounded-xl text-text-secondary">
+              <div className="px-4 py-3 bg-bg-tertiary rounded-xl border-2 border-border text-text-secondary">
                 {name}
                 <span className="text-xs ml-2">(Cannot be changed)</span>
               </div>
@@ -138,9 +139,8 @@ function CategoryForm({
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g., Subscriptions"
                 required
-                className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary
-                           text-text-primary placeholder:text-text-tertiary
-                           focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl
+                           text-text-primary placeholder:text-text-tertiary"
               />
             )}
           </div>
@@ -156,9 +156,10 @@ function CategoryForm({
                   key={i}
                   type="button"
                   onClick={() => setIcon(i)}
-                  className={`w-12 h-12 rounded-xl text-2xl transition-all ${
+                  className={`w-12 h-12 rounded-xl text-2xl border-2 border-border transition-all
+                             shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                     icon === i
-                      ? 'bg-primary/20 ring-2 ring-primary'
+                      ? 'bg-primary/20 border-primary'
                       : 'bg-bg-secondary'
                   }`}
                 >
@@ -179,8 +180,8 @@ function CategoryForm({
                   key={c}
                   type="button"
                   onClick={() => setColor(c)}
-                  className={`w-10 h-10 rounded-full transition-all ${
-                    color === c ? 'ring-2 ring-offset-2 ring-primary' : ''
+                  className={`w-10 h-10 rounded-full border-2 transition-all ${
+                    color === c ? 'border-border shadow-[2px_2px_0px_#1a1a1a]' : 'border-transparent'
                   }`}
                   style={{ backgroundColor: c }}
                 />
@@ -192,9 +193,8 @@ function CategoryForm({
           <button
             type="submit"
             disabled={isSaving || (!isSystemCategory && !name.trim())}
-            className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-xl
-                       transition-all duration-200 active:scale-[0.98]
-                       hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed
+            className="neo-btn w-full px-4 py-3 bg-primary text-white
+                       disabled:opacity-50 disabled:cursor-not-allowed
                        flex items-center justify-center gap-2"
           >
             {isSaving && <Loader2 className="w-5 h-5 animate-spin" />}
@@ -206,9 +206,7 @@ function CategoryForm({
             <button
               type="button"
               onClick={onDelete}
-              className="w-full px-4 py-3 text-danger font-semibold rounded-xl
-                         transition-all duration-200 active:scale-[0.98]
-                         border border-danger/30 hover:bg-danger/10
+              className="neo-btn w-full px-4 py-3 bg-bg-secondary text-danger
                          flex items-center justify-center gap-2"
             >
               <Trash2 className="w-5 h-5" />

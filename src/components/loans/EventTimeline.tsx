@@ -129,14 +129,14 @@ function EventCard({ event, isLast }: EventCardProps) {
 export function EventTimeline({ events }: EventTimelineProps) {
   if (events.length === 0) {
     return (
-      <div className="bg-bg-secondary rounded-xl p-4 shadow-sm">
+      <div className="neo-card p-4">
         <p className="text-text-tertiary text-center py-4">No events yet</p>
       </div>
     )
   }
 
   return (
-    <div className="bg-bg-secondary rounded-xl p-4 shadow-sm">
+    <div className="neo-card p-4">
       <h3 className="text-xs text-text-tertiary uppercase tracking-wide mb-4">Timeline</h3>
       <div>
         {events.map((event, index) => (

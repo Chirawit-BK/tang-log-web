@@ -207,7 +207,7 @@ export function RecordPaymentModal({
   return (
     <div className="fixed inset-0 bg-bg-primary z-[100] flex flex-col pt-safe pb-safe">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 h-14 border-b border-bg-tertiary">
+      <div className="flex items-center justify-between px-4 h-14 border-b-3 border-border">
         <button
           onClick={onClose}
           className="touch-target flex items-center justify-center text-primary"
@@ -216,7 +216,7 @@ export function RecordPaymentModal({
         >
           <X className="w-6 h-6" />
         </button>
-        <h1 className="text-lg font-semibold text-text-primary">Record Payment</h1>
+        <h1 className="text-lg font-bold text-text-primary">Record Payment</h1>
         <div className="w-11" />
       </div>
 
@@ -229,8 +229,8 @@ export function RecordPaymentModal({
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Current State Section */}
-            <div className="p-4 bg-bg-secondary rounded-xl space-y-3">
-              <p className="text-xs text-text-tertiary uppercase tracking-wide font-medium">
+            <div className="p-4 bg-bg-secondary rounded-xl border-2 border-border space-y-3">
+              <p className="text-xs text-text-tertiary uppercase tracking-wide font-bold">
                 Current State
               </p>
               <div className="grid grid-cols-2 gap-3">
@@ -263,8 +263,8 @@ export function RecordPaymentModal({
 
             {/* General payment error */}
             {errors.payment && (
-              <div className="p-3 bg-danger/10 border border-danger/20 rounded-xl">
-                <p className="text-sm text-danger text-center">{errors.payment}</p>
+              <div className="p-3 bg-danger/20 border-3 border-danger rounded-xl">
+                <p className="text-sm text-danger text-center font-bold">{errors.payment}</p>
               </div>
             )}
 
@@ -283,10 +283,9 @@ export function RecordPaymentModal({
                   value={displayPrincipal}
                   onChange={handlePrincipalChange}
                   placeholder="0"
-                  className={`w-full pl-10 pr-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             text-right text-xl font-semibold placeholder:text-text-tertiary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.principal ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full pl-10 pr-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             text-right text-xl font-bold placeholder:text-text-tertiary
+                             ${errors.principal ? 'border-danger' : ''}`}
                 />
               </div>
               {errors.principal ? (
@@ -312,10 +311,9 @@ export function RecordPaymentModal({
                   value={interestPeriods}
                   onChange={handlePeriodsChange}
                   placeholder="0"
-                  className={`w-full px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             text-right text-xl font-semibold placeholder:text-text-tertiary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.periods ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             text-right text-xl font-bold placeholder:text-text-tertiary
+                             ${errors.periods ? 'border-danger' : ''}`}
                 />
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-text-tertiary text-sm">
                   periods
@@ -333,9 +331,9 @@ export function RecordPaymentModal({
             </div>
 
             {/* Total Payment */}
-            <div className="p-4 bg-primary/10 border border-primary/20 rounded-xl">
+            <div className="p-4 bg-primary/20 border-3 border-primary rounded-xl">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-primary">Total Payment</p>
+                <p className="text-sm font-bold text-primary">Total Payment</p>
                 <p className="text-2xl font-bold text-primary">฿{formatAmount(totalPayment)}</p>
               </div>
             </div>
@@ -347,9 +345,8 @@ export function RecordPaymentModal({
                 <button
                   type="button"
                   onClick={() => setShowDatePicker(!showDatePicker)}
-                  className={`w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.paymentDate ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             ${errors.paymentDate ? 'border-danger' : ''}`}
                 >
                   <span className="flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-text-tertiary" />
@@ -361,7 +358,7 @@ export function RecordPaymentModal({
                 </button>
 
                 {showDatePicker && (
-                  <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-primary rounded-xl border border-bg-tertiary shadow-lg z-10">
+                  <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-secondary rounded-xl border-3 border-border shadow-[4px_4px_0px_#1a1a1a] z-10">
                     <input
                       type="date"
                       value={paymentDate}
@@ -373,8 +370,7 @@ export function RecordPaymentModal({
                           setErrors((prev) => ({ ...prev, paymentDate: undefined }))
                         }
                       }}
-                      className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary text-text-primary
-                                focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="neo-input w-full px-4 py-3 bg-bg-tertiary rounded-xl text-text-primary"
                     />
                   </div>
                 )}
@@ -396,9 +392,8 @@ export function RecordPaymentModal({
                       setErrors((prev) => ({ ...prev, accountId: undefined }))
                     }
                   }}
-                  className={`w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.accountId ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             ${errors.accountId ? 'border-danger' : ''}`}
                 >
                   <option value="">Select account</option>
                   {accounts
@@ -424,9 +419,8 @@ export function RecordPaymentModal({
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Add notes..."
                 rows={2}
-                className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary
-                          text-text-primary placeholder:text-text-tertiary
-                          focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                className="neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl
+                          text-text-primary placeholder:text-text-tertiary resize-none"
               />
             </div>
 
@@ -434,9 +428,8 @@ export function RecordPaymentModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-xl
-                        transition-all duration-200 active:scale-[0.98]
-                        hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed
+              className="neo-btn w-full px-4 py-3 bg-primary text-white
+                        disabled:opacity-50 disabled:cursor-not-allowed
                         flex items-center justify-center gap-2"
             >
               {isSubmitting && <Loader2 className="w-5 h-5 animate-spin" />}

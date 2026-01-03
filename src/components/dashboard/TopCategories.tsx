@@ -41,16 +41,16 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 const categoryColors = [
-  'bg-orange-500/20 text-orange-400',
-  'bg-blue-500/20 text-blue-400',
-  'bg-pink-500/20 text-pink-400',
-  'bg-purple-500/20 text-purple-400',
-  'bg-green-500/20 text-green-400',
+  'bg-orange-400 text-white border-2 border-border',
+  'bg-blue-500 text-white border-2 border-border',
+  'bg-pink-500 text-white border-2 border-border',
+  'bg-purple-500 text-white border-2 border-border',
+  'bg-green-500 text-white border-2 border-border',
 ]
 
 function SkeletonList() {
   return (
-    <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm">
+    <div className="neo-card p-4">
       <div className="h-5 w-40 rounded bg-bg-tertiary mb-4" />
       <div className="space-y-3">
         {[...Array(5)].map((_, i) => (
@@ -69,8 +69,8 @@ function SkeletonList() {
 
 function EmptyState() {
   return (
-    <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm">
-      <h3 className="text-base font-semibold text-text-primary mb-4">
+    <div className="neo-card p-4">
+      <h3 className="text-base font-bold text-text-primary mb-4">
         Top Expense Categories
       </h3>
       <div className="py-8 text-center text-text-tertiary">
@@ -95,8 +95,8 @@ export function TopCategories({
   }
 
   return (
-    <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm">
-      <h3 className="text-base font-semibold text-text-primary mb-4">
+    <div className="neo-card p-4">
+      <h3 className="text-base font-bold text-text-primary mb-4">
         Top Expense Categories
       </h3>
 

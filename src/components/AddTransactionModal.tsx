@@ -257,7 +257,7 @@ export function AddTransactionModal({
   return (
     <div className="fixed inset-0 bg-bg-primary z-[100] flex flex-col pt-safe pb-safe">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 h-14 border-b border-bg-tertiary">
+      <div className="flex items-center justify-between px-4 h-14 border-b-3 border-border">
         <button
           onClick={onClose}
           className="touch-target flex items-center justify-center text-primary"
@@ -266,7 +266,7 @@ export function AddTransactionModal({
         >
           <X className="w-6 h-6" />
         </button>
-        <h1 className="text-lg font-semibold text-text-primary">
+        <h1 className="text-lg font-bold text-text-primary">
           {isEditMode ? 'Edit Transaction' : 'Add Transaction'}
         </h1>
         <div className="w-11" />
@@ -282,8 +282,8 @@ export function AddTransactionModal({
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* LOAN_FLOW Notice */}
             {isLoanFlow && (
-              <div className="p-4 bg-warning/10 border border-warning/30 rounded-xl">
-                <p className="text-sm text-warning font-medium">
+              <div className="p-4 bg-warning/20 border-3 border-warning rounded-xl">
+                <p className="text-sm text-warning font-bold">
                   Loan transactions cannot be edited. They are managed through the Loans module.
                 </p>
               </div>
@@ -303,7 +303,9 @@ export function AddTransactionModal({
                       key={option.value}
                       type="button"
                       onClick={() => setKind(option.value)}
-                      className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all duration-200 ${
+                      className={`flex-1 py-3 px-4 rounded-xl font-bold border-2 border-border
+                                 shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5
+                                 transition-all duration-200 ${
                         kind === option.value
                           ? 'bg-primary text-white'
                           : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary'
@@ -330,11 +332,10 @@ export function AddTransactionModal({
                   onChange={handleAmountChange}
                   placeholder="0"
                   disabled={isLoanFlow}
-                  className={`w-full pl-10 pr-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             text-right text-xl font-semibold placeholder:text-text-tertiary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
+                  className={`neo-input w-full pl-10 pr-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             text-right text-xl font-bold placeholder:text-text-tertiary
                              disabled:opacity-50 disabled:cursor-not-allowed
-                             ${errors.amount ? 'border-danger' : 'border-bg-tertiary'}`}
+                             ${errors.amount ? 'border-danger' : ''}`}
                 />
               </div>
               {errors.amount && <p className="text-sm text-danger">{errors.amount}</p>}
@@ -355,10 +356,9 @@ export function AddTransactionModal({
                     }
                   }}
                   disabled={isLoanFlow}
-                  className={`w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
+                  className={`neo-input w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
                              disabled:opacity-50 disabled:cursor-not-allowed
-                             ${errors.accountId ? 'border-danger' : 'border-bg-tertiary'}`}
+                             ${errors.accountId ? 'border-danger' : ''}`}
                 >
                   <option value="">Select account</option>
                   {accounts
@@ -388,10 +388,9 @@ export function AddTransactionModal({
                       }
                     }}
                     disabled={isLoanFlow}
-                    className={`w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                               focus:outline-none focus:ring-2 focus:ring-primary/50
+                    className={`neo-input w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
                                disabled:opacity-50 disabled:cursor-not-allowed
-                               ${errors.toAccountId ? 'border-danger' : 'border-bg-tertiary'}`}
+                               ${errors.toAccountId ? 'border-danger' : ''}`}
                   >
                     <option value="">Select destination account</option>
                     {availableToAccounts.map((account) => (
@@ -420,10 +419,9 @@ export function AddTransactionModal({
                       }
                     }}
                     disabled={isLoanFlow}
-                    className={`w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                               focus:outline-none focus:ring-2 focus:ring-primary/50
+                    className={`neo-input w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
                                disabled:opacity-50 disabled:cursor-not-allowed
-                               ${errors.categoryId ? 'border-danger' : 'border-bg-tertiary'}`}
+                               ${errors.categoryId ? 'border-danger' : ''}`}
                   >
                     <option value="">Select category</option>
                     {availableCategories.map((category) => (
@@ -463,10 +461,9 @@ export function AddTransactionModal({
                   type="button"
                   onClick={() => setShowDatePicker(!showDatePicker)}
                   disabled={isLoanFlow}
-                  className={`w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
+                  className={`neo-input w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
                              disabled:opacity-50 disabled:cursor-not-allowed
-                             ${errors.transactionDate ? 'border-danger' : 'border-bg-tertiary'}`}
+                             ${errors.transactionDate ? 'border-danger' : ''}`}
                 >
                   <span className="flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-text-tertiary" />
@@ -478,16 +475,17 @@ export function AddTransactionModal({
                 </button>
 
                 {showDatePicker && (
-                  <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-primary rounded-xl border border-bg-tertiary shadow-lg z-10">
+                  <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-secondary rounded-xl border-3 border-border shadow-[4px_4px_0px_#1a1a1a] z-10">
                     {/* Quick options */}
                     <div className="flex gap-2 mb-4">
                       <button
                         type="button"
                         onClick={() => handleDateQuickSelect('today')}
-                        className={`flex-1 py-2 px-3 rounded-lg font-medium transition-all ${
+                        className={`flex-1 py-2 px-3 rounded-lg font-bold border-2 border-border transition-all
+                                   shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                           getDateLabel(transactionDate) === 'Today'
                             ? 'bg-primary text-white'
-                            : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary'
+                            : 'bg-bg-tertiary text-text-secondary hover:bg-bg-tertiary'
                         }`}
                       >
                         Today
@@ -495,10 +493,11 @@ export function AddTransactionModal({
                       <button
                         type="button"
                         onClick={() => handleDateQuickSelect('yesterday')}
-                        className={`flex-1 py-2 px-3 rounded-lg font-medium transition-all ${
+                        className={`flex-1 py-2 px-3 rounded-lg font-bold border-2 border-border transition-all
+                                   shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                           getDateLabel(transactionDate) === 'Yesterday'
                             ? 'bg-primary text-white'
-                            : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary'
+                            : 'bg-bg-tertiary text-text-secondary hover:bg-bg-tertiary'
                         }`}
                       >
                         Yesterday
@@ -516,8 +515,7 @@ export function AddTransactionModal({
                         }
                       }}
                       max={formatDateForInput(new Date())}
-                      className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary text-text-primary
-                                focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="neo-input w-full px-4 py-3 bg-bg-tertiary rounded-xl text-text-primary"
                     />
                   </div>
                 )}
@@ -538,9 +536,8 @@ export function AddTransactionModal({
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="What's this for?"
                 disabled={isLoanFlow}
-                className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary
+                className="neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl
                           text-text-primary placeholder:text-text-tertiary
-                          focus:outline-none focus:ring-2 focus:ring-primary/50
                           disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
@@ -550,9 +547,8 @@ export function AddTransactionModal({
               <button
                 type="submit"
                 disabled={isSaving}
-                className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-xl
-                          transition-all duration-200 active:scale-[0.98]
-                          hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed
+                className="neo-btn w-full px-4 py-3 bg-primary text-white
+                          disabled:opacity-50 disabled:cursor-not-allowed
                           flex items-center justify-center gap-2"
               >
                 {isSaving && <Loader2 className="w-5 h-5 animate-spin" />}

@@ -102,10 +102,10 @@ export function TransactionDetailPage() {
         </header>
 
         <div className="max-w-lg mx-auto px-4 py-6">
-          <div className="bg-bg-secondary rounded-2xl p-6 shadow-sm">
+          <div className="neo-card p-6">
             <div className="flex flex-col items-center justify-center py-8 text-text-tertiary">
               <Receipt className="w-16 h-16 mb-4 opacity-50" />
-              <p className="text-lg font-medium text-text-primary">Transaction not found</p>
+              <p className="text-lg font-bold text-text-primary">Transaction not found</p>
               <p className="text-sm mt-2">This transaction may have been deleted</p>
             </div>
           </div>
@@ -153,18 +153,22 @@ export function TransactionDetailPage() {
       {/* Content */}
       <div className="max-w-lg mx-auto px-4 py-6 space-y-4">
         {/* Amount Card */}
-        <div className="bg-bg-secondary rounded-2xl p-6 shadow-sm">
+        <div className={`neo-card p-6 ${
+          transaction.kind === 'income' ? 'bg-success/10' :
+          transaction.kind === 'expense' ? 'bg-danger/10' :
+          transaction.kind === 'transfer' ? 'bg-primary/10' : 'bg-warning/10'
+        }`}>
           <div className="text-center">
             {/* Kind Badge */}
             <span
-              className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${
+              className={`inline-block px-3 py-1 rounded-lg text-sm font-bold mb-4 border-2 border-border ${
                 transaction.kind === 'income'
-                  ? 'bg-success/20 text-success'
+                  ? 'bg-success text-white'
                   : transaction.kind === 'expense'
-                    ? 'bg-danger/20 text-danger'
+                    ? 'bg-danger text-white'
                     : transaction.kind === 'transfer'
-                      ? 'bg-primary/20 text-primary'
-                      : 'bg-warning/20 text-warning'
+                      ? 'bg-primary text-white'
+                      : 'bg-warning text-text-primary'
               }`}
             >
               {TRANSACTION_KIND_LABELS[transaction.kind]}
@@ -192,7 +196,7 @@ export function TransactionDetailPage() {
         </div>
 
         {/* Details Card */}
-        <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm divide-y divide-bg-tertiary">
+        <div className="neo-card p-4 divide-y divide-border/20">
           {/* Category */}
           {transaction.categoryName && (
             <div className="flex items-center justify-between py-3">

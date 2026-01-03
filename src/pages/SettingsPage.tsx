@@ -22,30 +22,30 @@ export function SettingsPage() {
       <h1 className="text-2xl font-bold text-text-primary mb-6">Settings</h1>
 
       {/* User card */}
-      <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm mb-6">
+      <div className="neo-card p-4 mb-6 bg-primary/10">
         <div className="flex items-center gap-3">
           {user?.picture ? (
             <img
               src={user.picture}
               alt={user.name}
-              className="w-12 h-12 rounded-full"
+              className="w-12 h-12 rounded-lg border-3 border-border"
             />
           ) : (
-            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-              <span className="text-lg font-bold text-primary">
+            <div className="w-12 h-12 rounded-lg bg-primary border-3 border-border flex items-center justify-center">
+              <span className="text-lg font-black text-white">
                 {user?.name?.charAt(0).toUpperCase()}
               </span>
             </div>
           )}
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-text-primary truncate">{user?.name}</p>
+            <p className="font-bold text-text-primary truncate">{user?.name}</p>
             <p className="text-sm text-text-tertiary truncate">{user?.email}</p>
           </div>
         </div>
       </div>
 
       {/* Menu items */}
-      <div className="bg-bg-secondary rounded-2xl shadow-sm overflow-hidden mb-6">
+      <div className="neo-card overflow-hidden mb-6">
         {menuItems.map((item, index) => {
           const Icon = item.icon
           return (
@@ -71,8 +71,8 @@ export function SettingsPage() {
       <button
         onClick={logout}
         disabled={isLoading}
-        className="w-full flex items-center gap-3 px-4 py-3 bg-bg-secondary rounded-2xl shadow-sm
-                   text-danger font-medium transition-colors active:bg-bg-tertiary
+        className="neo-card w-full flex items-center gap-3 px-4 py-3 bg-danger/10
+                   text-danger font-bold
                    disabled:opacity-50"
       >
         <LogOut className="w-5 h-5" />

@@ -18,7 +18,7 @@ function formatCurrency(amount: number): string {
 
 function SkeletonCard() {
   return (
-    <div className="bg-bg-secondary rounded-2xl p-4 shadow-sm">
+    <div className="neo-card p-4">
       <div className="flex items-center justify-between mb-4">
         <div className="h-5 w-28 rounded bg-bg-tertiary" />
         <div className="w-5 h-5 rounded bg-bg-tertiary" />
@@ -44,11 +44,10 @@ function EmptyState() {
   return (
     <button
       onClick={() => navigate('/loans')}
-      className="bg-bg-secondary rounded-2xl p-4 shadow-sm w-full text-left
-                 transition-all duration-200 active:scale-[0.99]"
+      className="neo-card p-4 w-full text-left"
     >
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-semibold text-text-primary">Loans Summary</h3>
+        <h3 className="text-base font-bold text-text-primary">Loans Summary</h3>
         <ChevronRight className="w-5 h-5 text-text-tertiary" />
       </div>
       <div className="py-6 text-center text-text-tertiary">
@@ -75,11 +74,10 @@ export function LoansSummary({ loans, isLoading }: LoansSummaryProps) {
   return (
     <button
       onClick={() => navigate('/loans')}
-      className="bg-bg-secondary rounded-2xl p-4 shadow-sm w-full text-left
-                 transition-all duration-200 active:scale-[0.99]"
+      className="neo-card p-4 w-full text-left"
     >
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-base font-semibold text-text-primary">Loans Summary</h3>
+        <h3 className="text-base font-bold text-text-primary">Loans Summary</h3>
         <ChevronRight className="w-5 h-5 text-text-tertiary" />
       </div>
 

@@ -191,7 +191,7 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
   return (
     <div className="fixed inset-0 bg-bg-primary z-[100] flex flex-col pt-safe pb-safe">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 h-14 border-b border-bg-tertiary">
+      <div className="flex items-center justify-between px-4 h-14 border-b-3 border-border">
         <button
           onClick={onClose}
           className="touch-target flex items-center justify-center text-primary"
@@ -200,7 +200,7 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
         >
           <X className="w-6 h-6" />
         </button>
-        <h1 className="text-lg font-semibold text-text-primary">Add Loan</h1>
+        <h1 className="text-lg font-bold text-text-primary">Add Loan</h1>
         <div className="w-11" />
       </div>
 
@@ -221,7 +221,8 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                     key={option.value}
                     type="button"
                     onClick={() => setDirection(option.value)}
-                    className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all duration-200 ${
+                    className={`flex-1 py-3 px-4 rounded-xl font-bold border-2 border-border transition-all duration-200
+                               shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                       direction === option.value
                         ? option.value === 'borrow'
                           ? 'bg-danger text-white'
@@ -250,10 +251,9 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                   }
                 }}
                 placeholder="Name..."
-                className={`w-full px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
+                className={`neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
                            placeholder:text-text-tertiary
-                           focus:outline-none focus:ring-2 focus:ring-primary/50
-                           ${errors.counterpartyName ? 'border-danger' : 'border-bg-tertiary'}`}
+                           ${errors.counterpartyName ? 'border-danger' : ''}`}
               />
               {errors.counterpartyName && (
                 <p className="text-sm text-danger">{errors.counterpartyName}</p>
@@ -275,10 +275,9 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                   value={displayPrincipal}
                   onChange={handlePrincipalChange}
                   placeholder="0"
-                  className={`w-full pl-10 pr-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             text-right text-xl font-semibold placeholder:text-text-tertiary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.principal ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full pl-10 pr-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             text-right text-xl font-bold placeholder:text-text-tertiary
+                             ${errors.principal ? 'border-danger' : ''}`}
                 />
               </div>
               {errors.principal && <p className="text-sm text-danger">{errors.principal}</p>}
@@ -296,9 +295,8 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                       setErrors((prev) => ({ ...prev, accountId: undefined }))
                     }
                   }}
-                  className={`w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.accountId ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full appearance-none px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             ${errors.accountId ? 'border-danger' : ''}`}
                 >
                   <option value="">Select account</option>
                   {accounts
@@ -324,7 +322,8 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                       key={type}
                       type="button"
                       onClick={() => setInterestType(type)}
-                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-bold border-2 border-border transition-all duration-200
+                                 shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                         interestType === type
                           ? 'bg-primary text-white'
                           : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary'
@@ -354,10 +353,9 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                   value={interestRate}
                   onChange={handleInterestRateChange}
                   placeholder="0"
-                  className={`w-full ${interestType === 'fixed' ? 'pl-10' : 'pl-4'} pr-16 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             text-right font-medium placeholder:text-text-tertiary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.interestRate ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full ${interestType === 'fixed' ? 'pl-10' : 'pl-4'} pr-16 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             text-right font-bold placeholder:text-text-tertiary
+                             ${errors.interestRate ? 'border-danger' : ''}`}
                 />
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-text-tertiary text-sm">
                   {interestType === 'fixed' ? '/ period' : '% / period'}
@@ -379,7 +377,8 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                       key={period}
                       type="button"
                       onClick={() => setInterestPeriod(period)}
-                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-bold border-2 border-border transition-all duration-200
+                                 shadow-[2px_2px_0px_#1a1a1a] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
                         interestPeriod === period
                           ? 'bg-primary text-white'
                           : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary'
@@ -401,9 +400,8 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                 <button
                   type="button"
                   onClick={() => setShowInterestStartDatePicker(!showInterestStartDatePicker)}
-                  className={`w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.interestStartDate ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             ${errors.interestStartDate ? 'border-danger' : ''}`}
                 >
                   <span className="flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-text-tertiary" />
@@ -415,7 +413,7 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                 </button>
 
                 {showInterestStartDatePicker && (
-                  <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-primary rounded-xl border border-bg-tertiary shadow-lg z-10">
+                  <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-secondary rounded-xl border-3 border-border shadow-[4px_4px_0px_#1a1a1a] z-10">
                     <input
                       type="date"
                       value={interestStartDate}
@@ -426,8 +424,7 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                           setErrors((prev) => ({ ...prev, interestStartDate: undefined }))
                         }
                       }}
-                      className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary text-text-primary
-                                focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="neo-input w-full px-4 py-3 bg-bg-tertiary rounded-xl text-text-primary"
                     />
                   </div>
                 )}
@@ -446,9 +443,8 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                 <button
                   type="button"
                   onClick={() => setShowDueDatePicker(!showDueDatePicker)}
-                  className={`w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl border text-text-primary
-                             focus:outline-none focus:ring-2 focus:ring-primary/50
-                             ${errors.dueDate ? 'border-danger' : 'border-bg-tertiary'}`}
+                  className={`neo-input w-full flex items-center justify-between px-4 py-3 bg-bg-secondary rounded-xl text-text-primary
+                             ${errors.dueDate ? 'border-danger' : ''}`}
                 >
                   <span className="flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-text-tertiary" />
@@ -460,7 +456,7 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                 </button>
 
                 {showDueDatePicker && (
-                  <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-primary rounded-xl border border-bg-tertiary shadow-lg z-10">
+                  <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-bg-secondary rounded-xl border-3 border-border shadow-[4px_4px_0px_#1a1a1a] z-10">
                     <input
                       type="date"
                       value={dueDate}
@@ -472,8 +468,7 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                         }
                       }}
                       min={interestStartDate}
-                      className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary text-text-primary
-                                focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="neo-input w-full px-4 py-3 bg-bg-tertiary rounded-xl text-text-primary"
                     />
                     {dueDate && (
                       <button
@@ -482,7 +477,7 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                           setDueDate('')
                           setShowDueDatePicker(false)
                         }}
-                        className="w-full mt-2 py-2 text-sm text-danger hover:bg-danger/10 rounded-lg transition-colors"
+                        className="neo-btn w-full mt-2 py-2 text-sm bg-bg-tertiary text-danger"
                       >
                         Clear due date
                       </button>
@@ -503,9 +498,8 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Add notes..."
                 rows={3}
-                className="w-full px-4 py-3 bg-bg-secondary rounded-xl border border-bg-tertiary
-                          text-text-primary placeholder:text-text-tertiary
-                          focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                className="neo-input w-full px-4 py-3 bg-bg-secondary rounded-xl
+                          text-text-primary placeholder:text-text-tertiary resize-none"
               />
             </div>
 
@@ -513,9 +507,8 @@ export function AddLoanModal({ isOpen, onClose, onSuccess }: AddLoanModalProps) 
             <button
               type="submit"
               disabled={isCreating}
-              className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-xl
-                        transition-all duration-200 active:scale-[0.98]
-                        hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed
+              className="neo-btn w-full px-4 py-3 bg-primary text-white
+                        disabled:opacity-50 disabled:cursor-not-allowed
                         flex items-center justify-center gap-2"
             >
               {isCreating && <Loader2 className="w-5 h-5 animate-spin" />}
