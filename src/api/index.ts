@@ -1,0 +1,6 @@
+export { api } from './client'
+export type { ApiError } from './client'
+export { authApi } from './auth'
+export { accountsApi } from './accounts'
+export { transactionsApi } from './transactions'
+export { loansApi } from './loans'
